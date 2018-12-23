@@ -1,0 +1,13 @@
+antlr4.antlrRegisteredTools=4.4@C\:\\Users\\User\\AppData\\Local\\Temp\\antlr-4.4-complete.jar\:4.7.1@C\:\\Users\\User\\OneDrive\\\uBB38\uC11C\\\uD559\uAD50\\3-2\\\uCEF4\uD30C(01\uBC18\uC870\uC740\uC120)\\\uC2E4\uC2B5\\antlr-4.7.1-complete.jar
+antlr4.antlrToolPath=C\:\\Users\\User\\OneDrive\\\uBB38\uC11C\\\uD559\uAD50\\3-2\\\uCEF4\uD30C(01\uBC18\uC870\uC740\uC120)\\\uC2E4\uC2B5\\antlr-4.7.1-complete.jar
+antlr4.encoding=UTF-8
+antlr4.listener=true
+antlr4.visitor=false
+antlr4.vmArgs=
+antlr4ide.is_project_specific=true
+autobuilding=true
+eclipse.preferences.version=1
+is_project_specific=
+outlet.DEFAULT_OUTPUT.cleanupDerived=true
+outlet.DEFAULT_OUTPUT.derived=true
+outlet.DEFAULT_OUTPUT.directory=./target/generated-sources/antlr4
