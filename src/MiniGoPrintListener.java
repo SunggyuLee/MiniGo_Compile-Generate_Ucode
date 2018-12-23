@@ -52,7 +52,6 @@ public class MiniGoPrintListener extends MiniGoBaseListener {
 	public void exitVar_decl(MiniGoParser.Var_declContext ctx) {
 		String str = "";
 		String IDENT = ctx.getChild(1).getText();
-		this.publicVar++;
 		if (ctx.getChildCount() == 3) { // VAR IDENT type_spec
 			this.publicVarL.add(new Var(IDENT, this.level + " " + (++this.publicVar), false));
 			str += this.blank + "sym " + this.level + " " + (++this.publicOffset) + " 1\n";
@@ -74,8 +73,7 @@ public class MiniGoPrintListener extends MiniGoBaseListener {
 
 	@Override
 	public void enterFun_decl(MiniGoParser.Fun_declContext ctx) {
-		// block_level++;
-		// have_return_stmt = false;
+		depth++;
 		super.enterFun_decl(ctx);
 	}
 
@@ -97,7 +95,7 @@ public class MiniGoPrintListener extends MiniGoBaseListener {
 		}
 
 		str += compound_stmt;
-		///////////////////////////////////////////////
+		
 		this.level--;
 		this.localVar = 0;
 		this.localArray = 0;
@@ -105,7 +103,7 @@ public class MiniGoPrintListener extends MiniGoBaseListener {
 		newTexts.put(ctx, str);
 	}
 
-	////////////////////////////////////
+	@Override
 	public void exitParams(MiniGoParser.ParamsContext ctx) {
 		String str = "";
 
@@ -141,6 +139,8 @@ public class MiniGoPrintListener extends MiniGoBaseListener {
 			str += newTexts.get(ctx.assign_stmt());
 		else if (ctx.getChild(0) == ctx.if_stmt())
 			str += newTexts.get(ctx.if_stmt());
+		else if (ctx.getChild(0) == ctx.while_stmt())
+			str += newTexts.get(ctx.while_stmt());
 		else if (ctx.getChild(0) == ctx.for_stmt())
 			str += newTexts.get(ctx.for_stmt());
 		else if (ctx.getChild(0) == ctx.return_stmt())
@@ -221,13 +221,30 @@ public class MiniGoPrintListener extends MiniGoBaseListener {
 
 	@Override
 	public void enterFor_stmt(MiniGoParser.For_stmtContext ctx) {
-		depth++;
 		super.enterFor_stmt(ctx);
 	}
 
 	@Override
 	public void exitFor_stmt(MiniGoParser.For_stmtContext ctx) {
 		// FOR expr compound_stmt;
+		String str = "";
+		str += "$$" + depth++ + "        nop\n";
+		str += newTexts.get(ctx.expr());
+		str += blank + "fjp $$" + depth + "\n";
+		str += newTexts.get(ctx.compound_stmt());
+		str += blank + "ujp $$" + (--depth) + "\n";
+		str += "$$" + ++depth + "        nop\n";
+
+		newTexts.put(ctx, str);
+	}
+	
+	@Override
+	public void enterWhile_stmt(MiniGoParser.While_stmtContext ctx) {
+		super.enterWhile_stmt(ctx);
+	}
+	
+	@Override
+	public void exitWhile_stmt(MiniGoParser.While_stmtContext ctx) {
 		String str = "";
 		str += "$$" + depth++ + "        nop\n";
 		str += newTexts.get(ctx.expr());

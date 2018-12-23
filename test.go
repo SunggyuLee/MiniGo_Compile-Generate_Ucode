@@ -1,3 +1,5 @@
+var p int
+var q int
 func main() {
 	var i int
 	var j int
@@ -5,7 +7,7 @@ func main() {
 	var rem int
 	var sum int
 	i int = 2
-	for i <= 500 {
+	while i <= 500 {
 		sum = 0
 		k = i/2
 		j = i

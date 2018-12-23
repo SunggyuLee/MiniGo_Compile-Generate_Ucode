@@ -127,6 +127,16 @@ public interface MiniGoListener extends ParseTreeListener {
 	 */
 	void exitIf_stmt(MiniGoParser.If_stmtContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MiniGoParser#while_stmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhile_stmt(MiniGoParser.While_stmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiniGoParser#while_stmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhile_stmt(MiniGoParser.While_stmtContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MiniGoParser#for_stmt}.
 	 * @param ctx the parse tree
 	 */

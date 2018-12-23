@@ -159,6 +159,18 @@ public class MiniGoBaseListener implements MiniGoListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterWhile_stmt(MiniGoParser.While_stmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWhile_stmt(MiniGoParser.While_stmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFor_stmt(MiniGoParser.For_stmtContext ctx) { }
 	/**
 	 * {@inheritDoc}

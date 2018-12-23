@@ -12,6 +12,5 @@ public class main {
 		
 		ParseTreeWalker walker = new ParseTreeWalker();
 		walker.walk(new MiniGoPrintListener(), tree);
-//		출력물 : [01][201602040][이성규][03]
 	}
 }
