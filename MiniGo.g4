@@ -18,6 +18,7 @@ stmt      : expr_stmt
          | compound_stmt
          | assign_stmt
          | if_stmt
+         | while_stmt
          | for_stmt
          | return_stmt;
 expr_stmt  : expr ;
@@ -28,6 +29,7 @@ assign_stmt : VAR IDENT ',' IDENT type_spec '=' LITERAL ',' LITERAL
 compound_stmt: '{' local_decl* stmt* '}';
 if_stmt       : IF expr compound_stmt
          | IF expr compound_stmt ELSE compound_stmt ;
+while_stmt : WHILE expr compound_stmt;
 for_stmt    : FOR expr compound_stmt;
 return_stmt    : RETURN expr ',' expr
          | RETURN expr
@@ -55,6 +57,7 @@ FUNC      : 'func'  ;
 FMT          : 'fmt'      ;
 INT          : 'int'   ;
 FOR          : 'for'   ;
+WHILE		: 'while' ;
 IF       : 'if'    ;
 ELSE      : 'else'  ;
 RETURN    : 'return';
